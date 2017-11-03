@@ -1,6 +1,6 @@
 module.exports.run = async (client, message, args) => { 
 	const Discord = require('discord.js');
-	if(message.author.id == "228271067821506560" || message.author.id == "297201585090723841" || message.author.id == "236279900728721409") {
+	if(message.author.id == "228271067821506560" || message.author.id == "297201585090723841") {
 		module.exports.error = "**:no_entry_sign: ERROR** "
 		module.exports.fgRed = "\x1b[1m\x1b[31m"
 		module.exports.reset = "\x1b[0m"
