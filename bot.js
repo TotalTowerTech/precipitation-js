@@ -87,7 +87,7 @@ client.on("message", async message => {
         message.reply("Stop.");
     }
 
-    if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:")) {
+    if (message.author.id === "247221105515823104" && message.content.includes(":P" || ":stuck_out_tongue:")) {
         fs.writeFileSync('./config.json', JSON.stringify(vicCount++));
         message.channel.send(`BAD VICTOR! (Current count: ${vicCount}`);
     }
