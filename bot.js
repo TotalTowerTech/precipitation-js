@@ -26,7 +26,7 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const config = require("./config.json")
 var prefix = 'pr:'
-
+var vicCount = 0;
 
 
 var token = process.env.TOKEN
@@ -81,6 +81,16 @@ fs.readdir("./modules/commands/", (err, files) => {
 client.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
+
+    if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro")) {
+        message.delete();
+        message.reply("Stop.");
+    }
+
+    if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:")) {
+        fs.writeFileSync('./config.json', JSON.stringify(vicCount++));
+        message.channel.send(`BAD VICTOR! (Current count: ${vicCount}`);
+    }
 
     let array = message.content.split(" ");
     let command = array[0];
