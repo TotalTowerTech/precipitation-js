@@ -89,7 +89,6 @@ client.on("message", async message => {
     if (!command.startsWith(prefix)) return;
 
     let cmd = client.commands.get(command.slice(prefix.length))
-
     if (cmd) {
         cmd.run(client, message, args);
     }

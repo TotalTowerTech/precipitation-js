@@ -10,7 +10,8 @@ module.exports.run = async (client, message, args) => {
 		});
 		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
 		embed.addField("List of available commands:", helpString)
-		embed.setDescription("For more information on a command, please use `tbot;help [command]`.");
+		embed.setDescription("For more information on a command, please use `pr:help [command]`.");
+		embed.setFooter(`Moderator commands are denoted with bold text. | Requested by ${member.user.username} on ${new Date()}`)
 		message.channel.send({ embed });
 	}
 	else {

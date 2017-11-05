@@ -1,5 +1,6 @@
 module.exports.run = async (client, message, args) => {
     var intToParse = parseInt(args.join(" "));
+    if (!message.author.hasPermission("MANAGE_MESSAGES")) return message.reply("**:no_entry_sign: ERROR:**: Insufficient permissions.")
     if (isNaN(intToParse)) {
         message.channel.send(":white_check_mark: Deleted NaN messages... just kidding! I'm not that dumb! :stuck_out_tongue:");
     }
