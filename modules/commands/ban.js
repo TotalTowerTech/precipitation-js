@@ -1,13 +1,21 @@
 module.exports.run = async (client, message, args) => {
-    if(!client.user.hasPermission("BAN_MEMBERS")) return message.reply("I do not have permission to ban.");
-    if(!message.user.hasPermission("BAN_MEMBERS")) return message.reply(`**:no_entry_sign: ERROR:**: Insufficient permissions.`);
+    const Discord = require('discord.js')
+    try {
+        if (!client.user.hasPermission("BAN_MEMBERS")) return message.reply("I do not have permission to ban.");
+        if (!message.user.hasPermission("BAN_MEMBERS")) return message.reply(`**:no_entry_sign: ERROR:**: Insufficient permissions.`);
 
-    let person = message.mentions.users.first;
-    if (person.length <= 0 || person == null) return message.reply("**:no_entry_sign: ERROR:** No one was pinged.");
+        let person = message.mentions.users.first;
+        if (person.length <= 0 || person == null) return message.reply("**:no_entry_sign: ERROR:** No one was pinged.");
 
-    person.ban(args[0]).then(member => {
-        message.reply(`${member.user.username} has been banned with reason ${args[0]}.`)
-    })
+        person.ban(args[0]).then(member => {
+            message.reply(`${member.user.username} has been banned with reason ${args[0]}.`)
+        })
+    } catch (error) {
+        let embed = new Discord.RichEmbed()
+        .setTitle("An error has occured.")
+        .setDescription(error.toString())
+    }
+
 }
 module.exports.help = {
     name: 'ban',
