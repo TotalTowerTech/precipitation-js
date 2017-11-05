@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     })
 }
 module.exports.help = {
-    name: '**ban**',
+    name: 'ban',
     args: '[person], [args]',
     notes: 'Bans a person.'
 }

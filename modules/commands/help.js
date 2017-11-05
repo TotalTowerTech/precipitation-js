@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 		commands.forEach(function (x) {
 			helpString += x + '\n'
 		});
-		embed.setTitle(`Help for PrecipitationJS v${ver}. Moderator commands are denoted with bolded text.`);
+		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
 		embed.addField("List of available commands:", helpString)
 		embed.setDescription("For more information on a command, please use `pr:help [command]`.");
 		message.channel.send({ embed });
