@@ -82,25 +82,14 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
 
-    if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro").toLowerCase()) {
+    if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro")) {
         message.delete();
         message.reply("Stop.");
     }
 
-    if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:").toLowerCase()) {
-        fs.writeFileSync('./config.json', JSON.stringify("viccount",vicCount++));
-        message.channel.send(`BAD VICTOR! (Current count: ${vicCount})`);
-    }
-
-    var curses = ["fuck", "bitch", "ass", "dick", "hentai", "rule34", "kys", "ky s", "k y s", "k ys"];
-    if (message.content.toLowerCase().includes(curses[curses.length])) {
-        for (var i = 0; i <= 5; i++) {
-            message.delete();
-            message.reply("Stop please. :c");
-            if (i == 5) {
-                message.reply("Yay it works");
-            }
-        }
+    if (message.author.id === "247221105515823104" && message.content.includes(":P" || ":stuck_out_tongue:")) {
+        fs.writeFileSync('./config.json', JSON.stringify(vicCount++));
+        message.channel.send(`BAD VICTOR! (Current count: ${vicCount}`);
     }
 
     let array = message.content.split(" ");
