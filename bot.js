@@ -92,12 +92,6 @@ client.on("message", async message => {
         message.channel.send(`BAD VICTOR! (Current count: ${vicCount})`);
     }
 
-    if (message.reactions.has(":star:")) {
-        let starBoard = message.guild.channels.find('name', "starboard");
-        if (!starBoard) return;
-        message.channel.send("Partially there!";
-    }
-
     let array = message.content.split(" ");
     let command = array[0];
     let args = array.slice(1);
