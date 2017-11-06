@@ -97,7 +97,7 @@ client.on("message", async message => {
         for (var i = 0; i <= 5; i++) {
             message.delete();
             message.reply("Stop please. :c");
-            if (i == 5) {
+            if (i === 5) {
                 message.reply("Yay it works");
             }
         }
