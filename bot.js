@@ -78,6 +78,7 @@ fs.readdir("./modules/commands/", (err, files) => {
     modCommand = false;
 })
 
+
 client.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
@@ -87,10 +88,34 @@ client.on("message", async message => {
         message.reply("Stop.");
     }
 
+    if (message.content.includes(process.env.TOKEN)) {
+        let embed = new Discord.RichEmbed()
+            .setTitle("Oh no... what have you done?")
+            .setDescription("The token for PrecipitationJS has been leaked and will be leaving in 30 seconds.")
+            .setColor("RED")
+        var leave = setImmediate(30000);
+        message.delete();
+        leave();
+    }
+
     if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:")) {
         fs.writeFileSync('./config.json', JSON.stringify(vicCount++));
         message.channel.send(`BAD VICTOR! (Current count: ${vicCount})`);
     }
+
+    try {
+        let starEmote = message.reactions.equals("?");
+        if (starEmote.length < 3) {
+            message.reply("yay it work");
+        }
+    } catch (e) {
+        let embed = new Discord.RichEmbed()
+            .setTitle("An error has occured.")
+            .setDescription(`An error has occured while performing an action.\r\n${e})`)
+            .setColor("RED")
+        message.channel.send({ embed });
+    }
+    
 
     let array = message.content.split(" ");
     let command = array[0];
