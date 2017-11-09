@@ -1,8 +1,8 @@
 module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
-    var phrase = args.join(" ").replace("a", phrase).replace("b", phrase).replace("c", phrase).replace("d", phrase).replace("e", phrase).replace("f", phrase).replace("g", phrase).replace("h", phrase).replace("i", phrase).replace("j", phrase).replace("k", phrase).replace("l", phrase).replace("m", phrase).replace("n", phrase).replace("o", phrase).replace("p", phrase).replace("q", phrase).replace("r", phrase).replace("s", phrase).replace("t", phrase).replace("u", phrase).replace("v", phrase).replace("w", phrase).replace("x", phrase).replace("y", phrase).replace("z", phrase);
+    let phrase = args.join(" ");
+    phrase.replace("a", phrase).replace("b", phrase).replace("c", phrase).replace("d", phrase).replace("e", phrase).replace("f", phrase).replace("g", phrase).replace("h", phrase).replace("i", phrase).replace("j", phrase).replace("k", phrase).replace("l", phrase).replace("m", phrase).replace("n", phrase).replace("o", phrase).replace("p", phrase).replace("q", phrase).replace("r", phrase).replace("s", replace).replace("t", phrase).replace("u", phrase).replace("v", phrase).replace("w", phrase).replace("x", phrase).replace("y", phrase).replace("z", phrase);
 
-    phrase
     let embed = new Discord.RichEmbed()
         .setAuthor("Corruption")
         .setDescription("Here's the corruption!")
