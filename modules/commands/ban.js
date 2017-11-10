@@ -7,8 +7,8 @@ module.exports.run = async (client, message, args) => {
         let person = message.mentions.users.first;
         if (person.length <= 0) return message.reply("**:no_entry_sign: ERROR:** No one was pinged.");
 
-        person.ban(args[0]).then(member => {
-            message.reply(`${member.user.username} has been banned with reason ${args[0]}.`)
+        person.ban(args.join(" ")).then(member => {
+            message.reply(`${member.user.username} has been banned with reason ${args.join(" ")}.`)
         })
     } catch (error) {
         let embed = new Discord.RichEmbed()
