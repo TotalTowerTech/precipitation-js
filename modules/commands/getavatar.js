@@ -1,10 +1,21 @@
 module.exports.run = async (client, message, args) => {
+    var Discord = require('discord.js')
     let pingedPerson = message.mentions.users.first;
-    if (pingedPerson == null || pingedPerson.length == 0) {
-        message.reply(`Here ya go! ${message.author.avatarURL}`);
-    }
-    else {
-        message.reply(`Here ya go! ${pingedPerson.avatarURL}`)
+    var embed;
+    if (pingedPerson) {
+        embed = new Discord.RichEmbed()
+            .setTitle(`${pingedPerson.username}'s current profile picture! c:`)
+            .setImage(pingedPerson.displayAvatarURL)
+            .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
+            .setColor("GREEN")
+        message.channel.send({ embed });
+    } else {
+        embed = new Discord.RichEmbed()
+            .setTitle(`${message.author.username}'s current profile picture! c:`)
+            .setImage(message.author.displayAvatarURL)
+            .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
+            .setColor("GREEN")
+        message.channel.send({ embed });
     }
 }
 module.exports.help = {
