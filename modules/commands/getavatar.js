@@ -3,19 +3,19 @@ module.exports.run = async (client, message, args) => {
     let embed;
     let pingedPerson = message.mentions.users.first;
     try {
-        if (pingedPerson == null || message.mentions.users.first.length == 0) {
+        if (pingedPerson) {
             embed = new Discord.RichEmbed()
-                .setTitle(`${message.author.username}'s profile picture! c:`)
-                .setImage(message.author.displayAvatarURL)
+                .setTitle(`${pingedPerson.username}'s profile picture! c:`)
+                .setImage(pingedPerson.displayAvatarURL)
                 .setFooter(`Requested by ${message.author.tag}`)
-                .setTimestamp(new Date())
+                .setTimestamp()
                 .setColor("GREEN")
             message.channel.send({ embed });
         } else {
             embed = new Discord.RichEmbed()
-                .setTitle(`${pingedPerson.username}'s profile picture! c:`)
-                .setImage(pingedPerson.displayAvatarURL)
-                .setFooter(`Requested by ${pingedPerson.tag}`)
+                .setTitle(`${message.author.username}'s profile picture! c:`)
+                .setImage(message.author.displayAvatarURL)
+                .setFooter(`Requested by ${message.author.tag}`)
                 .setTimestamp(new Date())
                 .setColor("GREEN")
             message.channel.send({ embed });
