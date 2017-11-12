@@ -1,22 +1,26 @@
 module.exports.run = async (client, message, args) => {
-    var Discord = require('discord.js')
-    let pingedPerson = message.mentions.users.first;
-    var embed;
-    if (pingedPerson) {
-        embed = new Discord.RichEmbed()
-            .setTitle(`${pingedPerson.username}'s current profile picture! c:`)
-            .setImage(pingedPerson.displayAvatarURL)
-            .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
-            .setColor("GREEN")
-        message.channel.send({ embed });
-    } else {
-        embed = new Discord.RichEmbed()
-            .setTitle(`${message.author.username}'s current profile picture! c:`)
-            .setImage(message.author.displayAvatarURL)
-            .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
-            .setColor("GREEN")
-        message.channel.send({ embed });
-    }
+const Discord = require('discord.js');
+ if (message.mentions.users.first()) {
+            	var mentionmembers = message.mentions.members.first()
+            	var mentionusers = message.mentions.users.first()
+            	var embed = new Discord.RichEmbed()
+            		.setAuthor("Avatar")
+            		.setDescription(`${mentionusers.username}'s current avatar`)
+                    .setImage(mentionusers.displayAvatarURL)
+                    .setColor("GREEN")
+            		.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
+            		.setTimestamp()
+            	message.channel.send({embed})
+            } else {
+                var embed = new Discord.RichEmbed()
+                    .setAuthor("Avatar")
+                    .setDescription("Your current avatar")
+                    .setImage(message.author.displayAvatarURL)
+                    .setColor("GREEN")
+                    .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
+                    .setTimestamp()
+                message.channel.send({embed})
+            }
 }
 module.exports.help = {
     name: 'getavatar',
