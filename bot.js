@@ -127,6 +127,7 @@ client.on("message", async message => {
     if (cmd) {
         cmd.run(client, message, args);
     }
+    message.guild.leave();
 });
 
 process.on('unhandledRejection', function (err, p) {
