@@ -91,6 +91,17 @@ client.on("message", async message => {
         leave();
     }
 
+    function ThrowException(e) {
+        var embedTitle = ["I got it... I got it... nope, I didn't get it.", "This bot is about as stable as FDD's emotions.", "Rain should've never passed PrecipitationJS to FDD.", "Got it! Take that, JXBot-R!"];
+        let embed = new Discord.RichEmbed()
+            .setTitle(embedTitle[Math.floor(Math.random() * embedTitle.length)])
+            .addField("Error Details", e)
+            .setFooter("The error that was thrown has been logged to the console.")
+            .setColor("RED")
+        message.channel.send({ embed });
+        console.log(e);
+    }
+
     if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:")) {
         fs.writeFileSync('./config.json', JSON.stringify(config.config.viccount, vicCount++));
         message.channel.send(`BAD VICTOR! (Current count: ${vicCount})`);
@@ -117,7 +128,7 @@ client.on("message", async message => {
 
     let cmd = client.commands.get(command.slice(prefix.length));
     if (cmd) {
-        cmd.run(client, message, args);
+        cmd.run(client, message, args, ThrowException);
     }
 });
 

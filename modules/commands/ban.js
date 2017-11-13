@@ -1,4 +1,4 @@
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args, ThrowException) => {
     const Discord = require('discord.js')
     try {
         if (!client.user.hasPermission("BAN_MEMBERS")) return message.reply("I do not have permission to ban.");
@@ -11,9 +11,7 @@ module.exports.run = async (client, message, args) => {
             message.reply(`${member.user.username} has been banned with reason ${args.join(" ")}.`)
         })
     } catch (error) {
-        let embed = new Discord.RichEmbed()
-        .setTitle("An error has occured.")
-        .setDescription(error.toString())
+        ThrowException(error);
     }
 }
 module.exports.help = {
