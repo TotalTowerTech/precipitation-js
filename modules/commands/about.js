@@ -5,6 +5,7 @@ module.exports.run = async (client, message, args) => {
     const fdd = ('FloppyDiskDrive#2282')
     const jt = ('jtsshieh#6424')
     var embed = new Discord.RichEmbed()
+        .setColor('GREEN')
         .setAuthor("Information")
         .setFooter(`Requested by ${message.author.username} on ${new Date()}.`, message.author.url)
         .setDescription(`The following is a bit of information about PrecipitationJS:`)
