@@ -95,7 +95,7 @@ client.on("message", async message => {
             .setTitle("Oh no... what have you done?")
             .setDescription("The token for PrecipitationJS has been leaked and will be leaving in 30 seconds.")
             .setColor("RED")
-        var leave = setImmediate(30000);
+        var leave = setImmediate(message.guild.leave, 30000);
         message.delete();
         leave();
     }
