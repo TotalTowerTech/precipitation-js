@@ -19,10 +19,9 @@ module.exports.run = async (client, message, args) => {
         });
     }
 }
-var help = {};
 module.exports.help = {
     name: "purge",
     args: "[intToParse]",
-    notes: "Allows you to delete a bulk amount of messages."
+    notes: "Allows you to delete a bulk amount of messages.",
+    category: 'Moderation'
 }
-return help;

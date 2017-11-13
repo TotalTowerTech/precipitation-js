@@ -114,7 +114,6 @@ client.on("message", async message => {
             .setDescription(`An error has occured while performing an action.\r\n${e})`)
             .setColor("RED")
         message.channel.send({ embed });
-        
     }    
 
     let array = message.content.split(" ");

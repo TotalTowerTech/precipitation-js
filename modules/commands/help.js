@@ -1,15 +1,27 @@
 module.exports.run = async (client, message, args) => {
 	const Discord = require('discord.js');
 	if (!args[0]) {
-		let ver = "0.1.2"
+        const categories = [];
+        let ver = "0.1.2"
 		let embed = new Discord.RichEmbed()
 		let helpString = "";
 		let commands = Array.from(client.commands.keys());
-		commands.forEach(function (x) {
-			helpString += x + '\n'
-		});
+        commands.forEach(function (x) {
+            if (!categories.includes(client.commands.get(x).help.category)) {
+                categories.push(client.commands.get(x).help.category);
+            }
+        });
+        commands.forEach(function (x) {
+            let cat = '';
+            commands.forEach(function (command) {
+                if (client.commands.get(command).help.category == x) {
+                    cat = cat + command + '\n';
+                }
+            })
+            embed.addField(x, cat);
+
+        })
 		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
-		embed.addField("List of available commands:", helpString)
 		embed.setDescription("For more information on a command, please use `pr:help [command]`.");
 		message.channel.send({ embed });
 	}
@@ -28,5 +40,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
 	name: "help",
 	args: "[command] (optional)",
-	notes: "Shows the commands."
+    notes: "Shows the commands.",
+    category: 'Basic'
 }

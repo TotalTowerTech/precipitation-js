@@ -18,5 +18,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "reload",
     args: "[./filename.js]",
-    notes: "Restarts a specified command."
+    notes: "Restarts a specified command.",
+    category: 'Owner Only'
 }

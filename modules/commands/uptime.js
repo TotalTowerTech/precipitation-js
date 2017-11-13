@@ -26,5 +26,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'uptime',
     args: '[none]',
-    notes: 'Sends the uptime of PrecipitationJS.'
+    notes: 'Sends the uptime of PrecipitationJS.',
+    category: 'Basic'
 }

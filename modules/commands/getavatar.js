@@ -23,5 +23,6 @@ const Discord = require('discord.js');
 module.exports.help = {
     name: 'getavatar',
     args: '[mentionMembers] / [mentionUsers]',
-    notes: 'Gets an avatar of a user.'
+    notes: 'Gets an avatar of a user.',
+    category: 'Basic'
 }

@@ -12,5 +12,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'setgame',
     args: '[gameToSet]',
-    notes: 'Sets the presence (game) of the bot. (Owner Only)'
+    notes: 'Sets the presence (game) of the bot. (Owner Only)',
+    category: "Owner Only"
 }

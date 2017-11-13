@@ -38,5 +38,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "eval",
     args: "[code]",
-    notes: "Executes JavaScript code."
+    notes: "Executes JavaScript code.",
+    category: 'Owner Only'
 }

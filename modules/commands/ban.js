@@ -19,5 +19,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'ban',
     args: '[person], [args]',
-    notes: 'Bans a person.'
+    notes: 'Bans a person.',
+    category: 'Moderation'
 }

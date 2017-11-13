@@ -16,5 +16,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: 'corrupt',
     args: '[phrase]',
-    notes: 'Corrupts a phrase.'
+    notes: 'Corrupts a phrase.',
+    category: 'Fun'
 }

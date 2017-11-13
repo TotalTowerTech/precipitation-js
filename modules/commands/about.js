@@ -18,5 +18,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "about",
     args: "n/a",
-    notes: "Shows you info about PrecipitationJS."
+    notes: "Shows you info about PrecipitationJS.",
+    category: 'Information'
 }
