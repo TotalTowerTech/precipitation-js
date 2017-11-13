@@ -74,7 +74,7 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
 
-    if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro")) {
+    if (message.author.id === "247221105515823104" && (message.content.toLowerCase().includes("piro") || message.content.toLowerCase().includes("p i r o")) {
         var treyCount = 0;
         treyCount = treyCount + 1;
         message.channel.send(`BAD TREY! (Current count: ${treyCount})`);
