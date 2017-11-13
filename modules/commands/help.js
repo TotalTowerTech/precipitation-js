@@ -20,11 +20,10 @@ module.exports.run = async (client, message, args) => {
                     }
                 })
                 embed.addField(x, cat);
-
-            })
-            embed.setTitle(`Help for PrecipitationJS v${ver}.`);
-            embed.setDescription("For more information on a command, please use `pr:help [command]`.");
-            message.channel.send({ embed });
+                embed.setTitle(`Help for PrecipitationJS v${ver}.`);
+                embed.setDescription("For more information on a command, please use `pr:help [command]`.");
+                message.channel.send({ embed });
+            })            
         }
         else {
             let command = client.commands.get(args[0]);
