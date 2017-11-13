@@ -2,7 +2,7 @@ module.exports.run = async (client, message, args) => {
 	const Discord = require('discord.js');
     try {
         if (!args[0]) {
-            const categories = [];
+            let categories = [];
             let ver = "0.1.2"
             let embed = new Discord.RichEmbed()
             let helpString = "";
@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
                     categories.push(client.commands.get(x).help.category);
                 }
             });
-            commands.forEach(function (x) {
+            categories.forEach(function (x) {
                 let cat = '';
                 commands.forEach(function (command) {
                     if (client.commands.get(command).help.category == x) {
@@ -20,10 +20,10 @@ module.exports.run = async (client, message, args) => {
                     }
                 })
                 embed.addField(x, cat);
-                embed.setTitle(`Help for PrecipitationJS v${ver}.`);
+            })            
+		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
                 embed.setDescription("For more information on a command, please use `pr:help [command]`.");
                 message.channel.send({ embed });
-            })            
         }
         else {
             let command = client.commands.get(args[0]);
