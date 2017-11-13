@@ -36,7 +36,7 @@ client.login(token)
 client.on('ready', () => {
     console.log("[i] Precipitation " + ver + " is now ready to go!");
     function gameRandomizer() {
-        var presence = ["never use discord.js-commando", `${prefix}help | PrecipitationJS v${ver}`, "being modular", "aaaaaaaaa"];
+        var presence = ["never use discord.js-commando", `${prefix}help | PrecipitationJS v${ver}`, "being modular", "aaaaaaaaa", `with ${client.guilds.size} guilds`];
         var gameSetter = presence[Math.floor(Math.random() * presence.length)];
         client.user.setGame(gameSetter);
     }
