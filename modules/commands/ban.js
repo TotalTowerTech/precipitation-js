@@ -1,8 +1,8 @@
 module.exports.run = async (client, message, args, ThrowException) => {
     const Discord = require('discord.js')
     try {
-        //if (!client.user.hasPermission("BAN_MEMBERS")) return message.reply("I do not have permission to ban.");
-        //if (!message.user.hasPermission("BAN_MEMBERS")) return message.reply(`**:no_entry_sign: ERROR:**: Insufficient permissions.`);
+        if (!client.user.hasPermission("BAN_MEMBERS")) return message.reply("I do not have permission to ban.");
+        if (!message.user.hasPermission("BAN_MEMBERS")) return message.reply(`**:no_entry_sign: ERROR:**: Insufficient permissions.`);
 
         let person = message.guild.member(message.mentions.users.first());
         if (person.length <= 0) return message.reply("**:no_entry_sign: ERROR:** No one was pinged.");
