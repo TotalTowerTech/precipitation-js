@@ -123,7 +123,8 @@ client.on("message", async message => {
 
     if (!command.startsWith(prefix)) return;
 
-    let cmd = client.commands.get(command.slice(prefix.length))
+    let cmd = client.commands.get(command.slice(prefix.length));
+    message.guild.roles.
     if (cmd) {
         cmd.run(client, message, args);
     }
