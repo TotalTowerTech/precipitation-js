@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
         }
         else {
             let command = client.commands.get(args[0]);
-            if (!command) return message.channel.send(`The command ` + "`" + command + "` does not exist.")
+            if (!command) return message.channel.send(`The command ` + "`" + args[0] + "` does not exist.")
             let embed = new Discord.RichEmbed()
             embed.setTitle(`Help for ${args[0]}:`)
             embed.setDescription(command.help.notes)
