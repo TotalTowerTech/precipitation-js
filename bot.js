@@ -76,7 +76,7 @@ client.on("message", async message => {
 
     if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro")) {
         var treyCount = 0;
-        treyCount++;
+        treyCount = treyCount + 1;
         message.channel.send(`BAD TREY! (Current count: ${treyCount})`);
         fs.writeFileSync('./config.json', JSON.stringify(config.config.treycount, treyCount))
     }
