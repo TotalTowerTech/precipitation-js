@@ -3,7 +3,8 @@ module.exports.run = async (client, message, args) => {
     try {
         let embed = new Discord.RichEmbed()
             .setAuthor(`Info about ${message.guild.name}:`)
-            .setDescription(`Name: ${message.guild.name}\r\nServer Owner: ${message.guild.owner.user.username}\r\nRoles: ${message.guild.roles}\r\nNumber of Roles: ${message.guild.roles.size}\r\nNumber of Members: ${message.guild.members.size}`)
+            .addField(`Name and Owner`, `Name: ${message.guild.name}\r\nOwner: ${message.guild.owner.user.username}\nCreated At: ${message.guild.createdAt}`)
+            .addField(`Roles and Members`, `Roles: ${message.guild.roles}\r\nNumber of Members: ${message.guild.members.size}`)
             .setColor("GREEN")
             .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
         message.channel.send({ embed })
