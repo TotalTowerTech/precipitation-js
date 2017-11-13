@@ -1,25 +1,27 @@
 module.exports.run = async (client, message, args) => {
-    var Discord = require('discord.js')
-    let pingedPerson = message.mentions.users.first;
-    var embed;
-    if (pingedPerson) {
-        embed = new Discord.RichEmbed()
-            .setTitle(`${pingedPerson.username}'s current profile picture! c:`)
-            .setImage(pingedPerson.displayAvatarURL)
-            .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
-            .setColor("GREEN")
-        message.channel.send({ embed });
-    } else {
-        embed = new Discord.RichEmbed()
-            .setTitle(`${message.author.username}'s current profile picture! c:`)
-            .setImage(message.author.displayAvatarURL)
-            .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS v0.1.2`)
-            .setColor("GREEN")
-        message.channel.send({ embed });
-    }
+const Discord = require('discord.js');
+ if (message.mentions.users.first()) {
+            	var mentionMembers = message.mentions.members.first()
+            	var mentionUsers = message.mentions.users.first()
+                var embed = new Discord.RichEmbed()
+                    .setAuthor("Avatar")
+                    .setDescription(`${mentionusers.username}'s current avatar! c:`)
+                    .setImage(mentionusers.displayAvatarURL)
+                    .setColor("GREEN")
+                    .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS`, message.author.displayAvatarURL)
+            	message.channel.send({embed})
+            } else {
+                var embed = new Discord.RichEmbed()
+                    .setAuthor("Avatar")
+                    .setDescription("Your current avatar! c:")
+                    .setImage(message.author.displayAvatarURL)
+                    .setColor("GREEN")
+                    .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS`, message.author.displayAvatarURL)
+                message.channel.send({embed})
+            }
 }
 module.exports.help = {
     name: 'getavatar',
-    args: '[pingedPerson]',
+    args: '[mentionMembers] / [mentionUsers]',
     notes: 'Gets an avatar of a user.'
 }
