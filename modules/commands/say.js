@@ -23,5 +23,6 @@ module.exports.run = async (client, message, args) => {
 module.exports.help = {
     name: "say",
     args: "[args]",
-    notes: `Repeats a string. [Owner Only]`
+    notes: `Repeats a string. [Owner Only]`,
+    category: 'Owner Only'
 }
