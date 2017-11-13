@@ -1,7 +1,7 @@
 module.exports.run = async (client, message, args) => {
     var messageToSend = args.join(" ");
     try {
-        if (message.author.id == 228271067821506560) {
+        if (message.author.id == "228271067821506560" || message.author.id == "297201585090723841" || message.author.id == "236279900728721409") {
             if (messageToSend.includes("@everyone")) {
                 messageToSend.replace("@everyone", "\@everyone");
             }
