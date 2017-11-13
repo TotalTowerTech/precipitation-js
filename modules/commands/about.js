@@ -8,11 +8,11 @@ module.exports.run = async (client, message, args) => {
         .setAuthor("Information")
         .setFooter(`Requested by ${message.author.username} on ${new Date()}.`, message.author.url)
         .setDescription(`The following is a bit of information about PrecipitationJS:`)
-        .addField(`${rain}: Handing over development to me (${fdd}), assisted in writing a command handler, etc.`)
-        .addField(`${jt}: Assisted me in writing the help command. Thanks man!`)
-        .addField(`Free Memory: ${Math.round((os.freemem) / 1024 / 1024 / 1024, 2)} GB`)
-        .addField(`Total Memory: ${Math.round((os.totalmem) / 1024 / 1024 / 1024, 2)} GB`)
-        .addField(`OS: ${os.platform} ${os.release}`)
+        .addField(`${rain}`, `Handing over development to me (${fdd}), assisted in writing a command handler, etc.`)
+        .addField(`${jt}`, `Assisted me in writing the help command. Thanks man!`)
+        .addField(`Free Memory` ,`${Math.round((os.freemem) / 1024 / 1024 / 1024, 2)} GB`)
+        .addField(`Total Memory` ,`${Math.round((os.totalmem) / 1024 / 1024 / 1024, 2)} GB`)
+        .addField(`OS`, `${os.platform} ${os.release}`)
     message.channel.send({ embed });
 }
 module.exports.help = {
