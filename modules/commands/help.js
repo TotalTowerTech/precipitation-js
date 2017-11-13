@@ -19,8 +19,9 @@ module.exports.run = async (client, message, args) => {
                         cat = cat + command + '\n';
                     }
                 })
-                embed.addField(x, cat);
+                embed.addField(x, cat,true);
             })            
+		embed.setColor("GREEN");
 		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
                 embed.setDescription("For more information on a command, please use `pr:help [command]`.");
                 message.channel.send({ embed });
