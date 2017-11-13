@@ -84,8 +84,10 @@ client.on("message", async message => {
     if (message.channel.type === "dm") return;
 
     if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro")) {
-        message.delete();
-        message.reply("Stop.");
+        var treyCount = 0;
+        treyCount++;
+        message.channel.send(`BAD TREY! (Current count: ${treyCount})`);
+        fs.writeFileSync('./config.json', JSON.stringify(config.config.treycount, treyCount))
     }
 
     if (message.content.includes(process.env.TOKEN)) {
@@ -99,7 +101,7 @@ client.on("message", async message => {
     }
 
     if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:")) {
-        fs.writeFileSync('./config.json', JSON.stringify(vicCount++));
+        fs.writeFileSync('./config.json', JSON.stringify(config.config.viccount, vicCount++));
         message.channel.send(`BAD VICTOR! (Current count: ${vicCount})`);
     }
 

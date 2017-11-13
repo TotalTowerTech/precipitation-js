@@ -8,6 +8,7 @@
     "config": {
         "prefix": "pr:",
         "version": "v1.0 Alpha 1",
-        "viccount":  0
+        "viccount": 0,
+        "treycount": 0
     }
 }
