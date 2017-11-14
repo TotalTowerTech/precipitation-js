@@ -130,7 +130,7 @@ client.on("message", async message => {
 
     let cmd = client.commands.get(command.slice(prefix.length));
     if (cmd) {
-        cmd.run(client, message, args, ThrowException);
+        cmd.run(client, message, args, throwex);
     }
 });
 
