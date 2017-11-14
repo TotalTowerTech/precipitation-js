@@ -6,7 +6,9 @@
  *   This program is free software: you can redistribute it and/or modify
  *   it under the terms of the MIT License.
  *
- *   
+ *   The help command was gladly provided from the moderation bot, "BonGon". 
+ *   Check out his bot here: www.github.com/jtsshieh/bongon . 
+ *   Yell at him for any issues.
  * 
  * *************************************/
 
