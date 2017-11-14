@@ -92,7 +92,7 @@ client.on("message", async message => {
         message.delete();
         leave();
     }
-
+    
     function throwex(e) {
         var embedTitle = ["I got it... I got it... nope, I didn't get it.", "This bot is about as stable as FDD's emotions.", "Rain should've never passed PrecipitationJS to FDD.", "Got it! Take that, JXBot-R!"];
         let embed = new Discord.RichEmbed()
