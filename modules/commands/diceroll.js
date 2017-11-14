@@ -1,18 +1,17 @@
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args, throwex) => {
     var roll;
     let param1 = parseInt(args[0]);
     try {
         if (param1 <= 0 || isNaN(param1)) {
             roll = Math.floor(Math.random() * 6) + 1;
-            message.channel.send(`:die: ${message.author.username} has rolled a ${roll}!`)
+            message.channel.send(`:game_die: ${message.author.username} has rolled a ${roll}!`)
         } else {
             roll = Math.floor(Math.random() * param1) + 1;
             message.channel.send(`:game_die: ${message.author.username} has rolled a ${roll}!`)
         }
     } catch (e) {
-        message.channel.send("```" + e + "```");
+        throwex(e);
     }
-    
 }
 module.exports.help = {
     name: 'diceroll',
