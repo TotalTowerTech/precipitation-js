@@ -8,6 +8,7 @@ module.exports.run = async (client, message, args, throwex) => {
 
         message.guild.member(person).ban(args.join(" ")).then(member => {
             message.reply(`${member.user.username} has been banned with reason ${args.join(" ")}.`)
+            member.send(`You have been banned from **${message.guild.name}** with the following reason: \r\n\`\`\`${args.join(" ")}\`\`\`\`\n Goodbye, and we hope to never see you again.`)
         })
     } catch (error) {
         throwex(error);
