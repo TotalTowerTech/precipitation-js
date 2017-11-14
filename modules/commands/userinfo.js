@@ -2,7 +2,7 @@ module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
     var pinged = message.member.mentions.first();
     try {
-        if (!pinged) {
+        if (pinged.size <= 0 || pinged == null) {
             var embed = new Discord.RichEmbed()
                 .setTitle(`Information about ${message.author.username}:`)
                 .addField("Account Information ", `Username: ${message.author.username}\r\nUser Discriminator: ${message.author.discriminator}\r\nUser ID: ${message.author.id}`)
