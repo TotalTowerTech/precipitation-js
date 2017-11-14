@@ -7,7 +7,7 @@
  *   it under the terms of the MIT License.
  *
  *   The help command was gladly provided from the moderation bot, "BonGon". 
- *   Check out his bot here: www.github.com/jtsshieh/bongon . 
+ *   Check out his bot here: www.github.com/jtsshieh/bongon. 
  *   Yell at him for any issues.
  * 
  * *************************************/
@@ -67,8 +67,7 @@ fs.readdir("./modules/commands/", (err, files) => {
         }
     })
 
-    console.log(`Finshed loading all ${modules.length} public commands.`)
-    modCommand = false;
+    console.log(`Finshed loading all ${modules.length} commands.`)
 })
 
 
@@ -92,7 +91,6 @@ client.on("message", async message => {
         message.delete();
         leave();
     }
-    
     function throwex(e) {
         var embedTitle = ["I got it... I got it... nope, I didn't get it.", "This bot is about as stable as FDD's emotions.", "Rain should've never passed PrecipitationJS to FDD.", "Got it! Take that, JXBot-R!"];
         let embed = new Discord.RichEmbed()
