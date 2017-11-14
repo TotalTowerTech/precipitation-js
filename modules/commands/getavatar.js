@@ -10,15 +10,14 @@ const Discord = require('discord.js');
          .setColor("GREEN")
          .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS`, message.author.displayAvatarURL)
      message.channel.send({embed})
- } else if (client.users.find(args.join(" "))) {
-     let user = client.users.find(args.join(" "));
+ } else {
      let embed = new Discord.RichEmbed()
          .setAuthor("Avatar")
-         .setDescription(`${user.username}'s current avatar! c:`)
-         .setImage(user.displayAvatarURL)
+         .setDescription("Your current avatar! c:")
+         .setImage(message.author.displayAvatarURL)
          .setColor("GREEN")
          .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS`, message.author.displayAvatarURL)
-     message.channel.send({ embed });
+     message.channel.send({embed})
  }
 }
 module.exports.help = {
