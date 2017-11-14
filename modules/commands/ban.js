@@ -1,4 +1,4 @@
-module.exports.run = async (client, message, args, ThrowException) => {
+module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js')
     try {
         if (!client.user.hasPermission("BAN_MEMBERS")) return message.reply("I do not have permission to ban.");
@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args, ThrowException) => {
             message.reply(`${member.user.username} has been banned with reason ${args.join(" ")}.`)
         })
     } catch (error) {
-        ThrowException(error);
+        throwex(error);
     }
 }
 module.exports.help = {

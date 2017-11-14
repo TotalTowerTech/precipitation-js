@@ -1,9 +1,9 @@
-module.exports.run = async (client, message, args, ThrowException) => {
+module.exports.run = async (client, message, args, throwex) => {
     if (args.join(" ").length <= 0) {
         message.reply(":no_entry_sign: **ERROR:** You must provide details!");
 
     } else {
-        ThrowException(args.join(" "));
+        throwex(args.join(" "));
     }
 }
 module.exports.help = {
