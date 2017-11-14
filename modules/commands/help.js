@@ -1,4 +1,4 @@
-module.exports.run = async (client, message, args) => {
+module.exports.run = async (client, message, args, throwex) => {
 	const Discord = require('discord.js');
     try {
         if (!args[0]) {
@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
                         cat = cat + command + '\n';
                     }
                 })
-                embed.addField(x, cat,true);
+                embed.addField(x, cat, true);
             })            
 		embed.setColor("GREEN");
 		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
@@ -28,7 +28,12 @@ module.exports.run = async (client, message, args) => {
         }
         else {
             let command = client.commands.get(args[0]);
-            if (!command) return message.channel.send(`The command ` + "`" + args[0] + "` does not exist.")
+            if (!command) {
+                var embed = new Discord.RichEmbed()
+                    .setTitle("Help for... er... what did you say, sonny?")
+                    .setDescription(`The command ${args[0]} doesn't exist. Try \`pr:help\` for a list of commands.`)
+                return message.channel.send({ embed });
+            }
             let embed = new Discord.RichEmbed()
             embed.setTitle(`Help for ${args[0]}:`)
             embed.setDescription(command.help.notes)
@@ -37,7 +42,7 @@ module.exports.run = async (client, message, args) => {
 
         }
     } catch (e) {
-        message.channel.send("```" + e + "```")
+        throwex(e);
     }
 }
 
