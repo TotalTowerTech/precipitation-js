@@ -1,6 +1,6 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
-    var pinged = message.member.mentions.first();
+    let pinged = message.guild.member(message.mentions.users.first());
     try {
         if (pinged.size <= 0 || pinged == null) {
             var embed = new Discord.RichEmbed()
