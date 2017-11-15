@@ -1,8 +1,8 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
-    var pinged = message.member.mentions.first();
+    let pinged = message.guild.member(message.mentions.users.first());
     try {
-        if (pinged.size <= 0 || pinged == null) {
+        if (pinged == null) {
             var embed = new Discord.RichEmbed()
                 .setTitle(`Information about ${message.author.username}:`)
                 .addField("Account Information ", `Username: ${message.author.username}\r\nUser Discriminator: ${message.author.discriminator}\r\nUser ID: ${message.author.id}`)
@@ -11,10 +11,10 @@ module.exports.run = async (client, message, args, throwex) => {
             message.channel.send({ embed })
         } else {
             var embed = new Discord.RichEmbed()
-                .setTitle(`Information about ${pinged.username}:`)
-                .addField("Account Information ", `Username: ${pinged.username}\r\nUser Discriminator: ${message.author.discriminator}\r\nUser ID: ${message.author.id}`)
-                .addField("Dates", `Creation Date: ${pinged.createdAt}\r\nJoined Date: ${pinged.joinedAt}`)
-                .addField("Presence", `${pinged.presence}`)
+                .setTitle(`Information about ${pinged.user.username}:`)
+                .addField("Account Information ", `Username: ${pinged.user.username}\r\nUser Discriminator: ${pinged.user.discriminator}\r\nUser ID: ${pinged.user.id}`)
+                .addField("Dates", `Creation Date: ${pinged.user.createdAt}\r\nJoined Date: ${pinged.joinedAt}`)
+                .addField("Presence", `${pinged.user.presence}`)
             message.channel.send({ embed })
         }
         } catch (e) {
