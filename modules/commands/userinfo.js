@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, throwex) => {
                 .setTitle(`Information about ${message.author.username}:`)
                 .addField("Account Information ", `Username: ${message.author.username}\r\nUser Discriminator: ${message.author.discriminator}\r\nUser ID: ${message.author.id}`)
                 .addField("Dates", `Creation Date: ${message.author.createdAt}\r\nJoined Date: ${message.member.joinedAt}`)
-                .addField("Presence", `${message.author.presence()}`)
+                .addField("Presence", `${message.author.presence}`)
             message.channel.send({ embed })
         } else {
             var embed = new Discord.RichEmbed()
