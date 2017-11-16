@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args, throwex) => {
 
         message.guild.member(person).kick(args.join(" ")).then(member => {
             message.reply(`${member.user.username} has been kicked with reason ${args.join(" ")}.`)
-            member.send(`You have been kicked from **${client.guild.name}** with the following reason: \r\n\`\`\`${args.join(" ")}\`\`\`\`\n You may be able to join, but it's best to wait a few days to set back a bit.`)
+            member.send(`You have been kicked from **${client.guild.name}** with the following reason: \r\n\`\`\`${args.join(" ").substr(person.size)}\`\`\`\`\n You may be able to join, but it's best to wait a few days to set back a bit.`)
         })
     } catch (error) {
         throwex(error);
