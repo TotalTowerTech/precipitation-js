@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args, throwex) => {
     try {
         let embed = new Discord.RichEmbed()
             .setTitle(`LMFGTFY - ${args.join(" ")}`)
-            .setDescription(`www.lmfgtfy.com/${args.join(" ").replaceAll(" "), "+"}`)
+            .setDescription(`www.lmfgtfy.com/${replaceAll(args.join(" ")), "+"}`)
             .setFooter(`Requested by ${message.author.username} on ${new Date()} | PrecipitationJS v0.1.2`)
         message.channel.send({ embed });
     } catch (e) {
