@@ -5,7 +5,10 @@
   "main": "bot.js",
   "dependencies": {
     "discord.js": "^11.2.1",
-    "heroku": "^0.2.0"
+    "ffmpeg": "0.0.4",
+    "heroku": "^0.2.0",
+    "opus": "0.0.0",
+    "ytdl-core": "^0.18.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -14,7 +17,7 @@
   },
   "author": "",
   "license": "ISC",
-   "engines": {
+  "engines": {
     "node": "8.5.0"
   }
 }
