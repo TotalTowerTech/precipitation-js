@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args, throwex) => {
     weather.find({ search: args.join(" "), degreeType: 'C' }, function (err, result) {
         if (err) throwex(err);
         try {
-            if (result.length <= 0) {
+            if (!result) {
                 let e = new Discord.RichEmbed()
                     .setTitle("Error - No Location")
                     .setDescription("Please enter a valid location.")
