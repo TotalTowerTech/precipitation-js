@@ -32,5 +32,5 @@ module.exports.help = {
     name: 'weather',
     args: '[result]',
     notes: 'Gets the weather of a person.',
-    category: 'Informative'
+    category: 'Information'
 }
