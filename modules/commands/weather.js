@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, throwex) => {
 
             let embed = new Discord.RichEmbed()
                 .setTitle(`Current weather in ${current.observationpoint}`)
-                .addField(`Weather Overview`, `In ${current.observationpoint}, it is currently ${Math.round(parseInt(current.temperature - 32) * 0.55)} °C with a windspeed of ${Math.round(parseInt(current.winddisplay) / 0.621371)} km/h. It is ${current.humidity}% humid.`)
+                .addField(`Weather Overview`, `In ${current.observationpoint}, it is currently ${Math.round(parseInt(current.temperature - 32) * 5/9} °C with a windspeed of ${Math.round(parseInt(current.winddisplay) / 0.621371)} km/h. It is ${current.humidity}% humid.`)
                 .setColor("GREEN")
                 .setFooter(`Requested by ${message.author.username} on ${new Date()} | PrecipitationJS v0.1.2`)
             message.channel.send({ embed });
