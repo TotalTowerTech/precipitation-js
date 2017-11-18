@@ -151,6 +151,7 @@ client.on("message", async message => {
             }
         }
     }
+    checkSpam();
 });
 
 process.on('unhandledRejection', function (err, p) {
