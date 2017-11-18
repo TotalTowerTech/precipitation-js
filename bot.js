@@ -20,7 +20,7 @@ client.commands = new Discord.Collection();
 const config = require("./config.json")
 var prefix = 'pr:'
 var vicCount = 0;
-
+var sameMsg = {};
 
 var token = process.env.TOKEN
 
@@ -129,6 +129,27 @@ client.on("message", async message => {
     let cmd = client.commands.get(command.slice(prefix.length));
     if (cmd) {
         cmd.run(client, message, args, throwex);
+    }
+    function checkSpam(oldMsg, newMsg) {
+        if (oldMsg[message.author.id] != message.content) {
+            sameMsg[message.author.id] = 0;
+        }
+        oldMsg[message.author.id] = message.content;
+        sameMsg[message.author.id] += 1;
+
+        if (oldMsg[message.author.id] == message.content && sameMsg[message.author.id] == 10) {
+            let auth = message.author;
+            if (message.guild.id == 297218185374203904) {
+                client.channels.get("335955604818624534").send(`${auth.username} has spammed in ${message.channel.name}.`);
+                message.reply("I'm done with your crap. I've told the staff.");
+                message.delete();
+            } else if (oldMsg[message.author.id] == message.content && sameMsg[message.author.id] > 3) {
+                var responses = ["Come on man, you're only hurting.", "If you won't delete it, then *I* will.", "Stop please! :c", "I want you to stop. Now.", `I'm gonna tell ${message.guild.owner.user.username} if you don't stop! >:c`, "Saying something more than three times is spam. Stop. c:"];
+                message.reply(responses[Math.floor(Math.random() * responses.length)]);
+            } else if (oldMsg[message.author.id] == message.content && sameMsg[message.author.id] > 10) {
+                message.delete();
+            }
+        }
     }
 });
 
