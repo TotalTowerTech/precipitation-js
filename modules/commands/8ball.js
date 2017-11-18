@@ -3,7 +3,7 @@ module.exports.run = async (client, message, args, throwex) => {
     if (!args.join(" ")) return message.reply("You must enter a question.");
     message.reply(replies[Math.random() * replies.length]);
 }
-module.exports.run = {
+module.exports.help = {
     name: '8ball',
     args: '[args]',
     notes: 'Find your future with this command!',
