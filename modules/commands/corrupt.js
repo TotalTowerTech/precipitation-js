@@ -1,13 +1,21 @@
 module.exports.run = async (client, message, args) => {
     const Discord = require('discord.js');
-	let phrase = message.content.substr(11); // Will improve that later
-	let modifiedPhrase = phrase.replace("a", phrase).replace("b", phrase).replace("c", phrase).replace("d", phrase).replace("e", phrase).replace("f", phrase).replace("g", phrase).replace("h", phrase).replace("i", phrase).replace("j", phrase).replace("k", phrase).replace("l", phrase).replace("m", phrase).replace("n", phrase).replace("o", phrase).replace("p", phrase).replace("q", phrase).replace("r", phrase).replace("s", phrase).replace("t", phrase).replace("u", phrase).replace("v", phrase).replace("w", phrase).replace("x", phrase).replace("y", phrase).replace("z", phrase);
-	
+    var endString = '';
+    let level = parseInt(args[0]);
+    let phrase = args.slice(1).join(" ");
+    if (isNaN(level)) return message.reply("Corruption cannot be NaN.");
+    if (level <= 0) return message.channel.send("Corruption cannot be less than or equal to 0.");
+
+    for (var i = 0; i < level; i++) {
+        phrase.split();
+        endString += string[Math.floor(Math.random() * string.length)];
+    }
+
     let embed = new Discord.RichEmbed()
         .setAuthor("Corruption")
         .setDescription("Here's the corruption!")
-        .addField(":inbox_tray: Input:", `\`\`\`\n${phrase}\n\`\`\``)
-        .addField(":outbox_tray: Output:", `\`\`\`js\n${modifiedPhrase}\n\`\`\``)
+        .addField(":inbox_tray: Input:", `\`\`\`\n${args.slice(1).join(" ")}\n\`\`\``)
+        .addField(":outbox_tray: Output:", `\`\`\`\n${endString}\n\`\`\``)
         .setColor("GREEN")
         .setFooter("Precipitation 0.1.2", client.user.avatarURL)
         .setTimestamp()
@@ -16,7 +24,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: 'corrupt',
-    args: '[phrase]',
+    args: '[level], [phrase]',
     notes: 'Corrupts a phrase.',
     category: 'Fun'
 }
