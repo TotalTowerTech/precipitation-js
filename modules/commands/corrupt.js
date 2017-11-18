@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
 
     for (var i = 0; i < level; i++) {
         phrase.split();
-        endString += string[Math.floor(Math.random() * string.length)];
+        endString += phrase[Math.floor(Math.random() * phrase.length)];
     }
 
     let embed = new Discord.RichEmbed()
