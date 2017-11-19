@@ -39,7 +39,8 @@ module.exports.run = async (client, message, args, throwex) => {
             queue: []
         };
 
-        if (!message.member.voiceConnection) message.member.voiceConnection.join().then(function (connection) {
+        let c = message.channel.voiceChannel;
+        if (!message.member.voiceConnection) c.join().then(function (connection) {
             play(connection, message);
         })
     } catch (e) {
@@ -47,6 +48,8 @@ module.exports.run = async (client, message, args, throwex) => {
     }
   
     var server = servers[message.guild.id];
+
+    server.queue.push(args[0]);
 }
 module.exports.help = {
     name: 'music',
