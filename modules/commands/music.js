@@ -4,18 +4,19 @@ module.exports.run = async (client, message, args, throwex) => {
     var servers = {};
     let embed;
 
-    function play(connection, message) {
-        var server = servers[message.guild.id];
-        server.dispatcher = connection.playStream(ytdl(queue[0], { filter: "audioonly" }));
-
-        server.queue.shift();
-        server.dispatcher.on("end", function () {
-            if (queue[0]) play(connection, message);
-            else connection.disconnect();
-        }) 
-    }
-
     try {
+        function play(connection, message) {
+            var server = servers[message.guild.id];
+            server.dispatcher = connection.playStream(ytdl(queue[0], { filter: "audioonly" }));
+
+            server.queue.shift();
+            server.dispatcher.on("end", function () {
+                if (queue[0]) play(connection, message);
+                else connection.disconnect();
+            })
+        }
+
+
         if (!args[0]) {
             embed = new Discord.RichEmbed()
                 .setTitle("Error - You must provide a YouTube Link")
@@ -43,13 +44,16 @@ module.exports.run = async (client, message, args, throwex) => {
         if (!message.member.voiceConnection) message.member.voiceChannel.join().then(function (connection) {
             play(connection, message);
         })
+
+
+        var server = servers[message.guild.id];
+
+        server.queue.push(args[0]);
     } catch (e) {
         throwex(e);
     }
-  
-    var server = servers[message.guild.id];
 
-    server.queue.push(args[0]);
+   
 }
 module.exports.help = {
     name: 'music',
