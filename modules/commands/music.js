@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args, throwex) => {
         };
 
         let c = message.member.voiceChannel;
-        if (!message.member.voiceConnection) c.join().then(function (connection) {
+        if (!message.member.voiceConnection) message.member.voiceChannel.join().then(function (connection) {
             play(connection, message);
         })
     } catch (e) {
