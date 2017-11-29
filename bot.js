@@ -69,7 +69,7 @@ fs.readdir("./modules/commands/", (err, files) => {
         }
     })
 
-    console.log(`Finshed loading all ${modules.length} commands.`)
+    console.log(`Finished loading all ${modules.length} commands.`)
 })
 
 
@@ -127,7 +127,7 @@ client.on("message", async message => {
     let args = array.slice(1);
 
     if (!command.startsWith(prefix)) return;
-
+    if (!message.channel.nsfw) return;
     let cmd = client.commands.get(command.slice(prefix.length));
     if (cmd) {
         cmd.run(client, message, args, throwex);
@@ -153,7 +153,7 @@ client.on("message", async message => {
             }
         }
     }
-    checkSpam();
+    checkSpam(message.content, message.content);
 });
 
 process.on('unhandledRejection', function (err, p) {
