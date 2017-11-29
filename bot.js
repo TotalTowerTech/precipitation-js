@@ -127,7 +127,6 @@ client.on("message", async message => {
     let args = array.slice(1);
 
     if (!command.startsWith(prefix)) return;
-    if (!message.channel.nsfw) return;
     let cmd = client.commands.get(command.slice(prefix.length));
     if (cmd) {
         cmd.run(client, message, args, throwex);
