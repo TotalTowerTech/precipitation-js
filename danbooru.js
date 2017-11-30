@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args, throwex) => {
     if (message.channel.nsfw) {
         try {
             if (!args[0]) {
-                kaori.search('e621', {
+                kaori.search('danbooru', {
                     tags: [rndTags[Math.floor(Math.random() * rndTags.length)]],
                     limit: 1,
                     random: true
@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, throwex) => {
                     message.channel.send({ embed });
                 })
             }
-            kaori.search('e621', {
+            kaori.search('danbooru', {
                 tags: [args[0]],
                 limit: 1,
                 random: true
@@ -41,7 +41,7 @@ module.exports.run = async (client, message, args, throwex) => {
 }
 
 module.exports.help = {
-    name: 'e621',
+    name: 'danbooru',
     args: '[args[0]] (optional)',
     notes: "Everyone has their needs... so why not have everybody's favorite globe help you?",
     category: 'NSFW'
