@@ -4,6 +4,7 @@
   "description": "A Discord Bot fo moderation and fun.",
   "main": "bot.js",
   "dependencies": {
+    "booru": "^0.3.3",
     "discord.js": "^11.2.1",
     "ffmpeg": "0.0.4",
     "heroku": "^0.2.0",
