@@ -125,7 +125,6 @@ client.on("message", async message => {
     let array = message.content.split(" ");
     let command = array[0];
     let args = array.slice(1);
-
     if (!command.startsWith(prefix)) return;
     let cmd = client.commands.get(command.slice(prefix.length));
     if (cmd) {
