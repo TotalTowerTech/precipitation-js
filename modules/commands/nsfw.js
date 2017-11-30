@@ -1,5 +1,6 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
+    const http = require('http');
     if (message.channel.nsfw) {
         try {
             let tag;
@@ -29,7 +30,8 @@ module.exports.run = async (client, message, args, throwex) => {
             } else {
                 tag = `${tag2}`;
             }
-            request(`https://danbooru.domai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
+
+            http.request(`https://danbooru.domai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
                 body = JSON.parse(body);
                 let post = body[0];
                 if (error != null) {
@@ -44,6 +46,7 @@ module.exports.run = async (client, message, args, throwex) => {
                 } else {
                     message.channel.send(`No entries for ${tag} was found. Try again when new images are out!`);
                 }
+                
             });
         } catch (e) {
             throwex(e);
