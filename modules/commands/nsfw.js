@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args, throwex) => {
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
     if (message.channel.nsfw) {
         try {
-            kaori.search('e621', {
+            kaori.search('danbooru', {
                 tags: [args[0]],
                 limit: 1,
                 random: true
