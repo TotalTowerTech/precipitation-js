@@ -1,6 +1,6 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
-    const http = require('http');
+    const http = require('https');
     if (message.channel.nsfw) {
         try {
             let tag;
