@@ -1,7 +1,7 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
     const Kaori = require('kaori');
-    var koari = new Koari();
+    var kaori = new Kaori();
     var rndTags = ['furry', 'gay', 'incest', 'hentai', 'oppai', 'cat', 'pokemon'];
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
     if (message.channel.nsfw) {
