@@ -1,10 +1,24 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
-    const http = require('https');
-    const kaori = require('kaori');
+    const Kaori = require('kaori');
+    var koari = new Koari();
+    var rndTags = ['furry', 'gay', 'incest', 'hentai', 'oppai', 'cat', 'pokemon'];
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
     if (message.channel.nsfw) {
         try {
+            if (!args[0]) {
+                kaori.search('danbooru', {
+                    tags: [rndTags[Math.floor(Math.random() * rndTags.length)]],
+                    limit: 1,
+                    random: true
+                }).then(images => {
+                    let embed = new Discord.RichEmbed()
+                        .setTitle(titles[Math.floor(Math.random() * titles.length)])
+                        .setImage(images[0].common.fileURL())
+                        .setColor('GREEN')
+                    message.channel.send({ embed });
+                })
+            }
             kaori.search('danbooru', {
                 tags: [args[0]],
                 limit: 1,
@@ -27,8 +41,8 @@ module.exports.run = async (client, message, args, throwex) => {
 }
 
 module.exports.help = {
-    name: 'e621',
-    args: '[args[0]]',
+    name: 'danbooru',
+    args: '[args[0]] (optional)',
     notes: "Everyone has their needs... so why not have everybody's favorite globe help you?",
     category: 'NSFW'
 }
