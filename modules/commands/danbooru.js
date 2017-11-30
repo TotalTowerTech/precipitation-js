@@ -7,7 +7,8 @@ module.exports.run = async (client, message, args, throwex) => {
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
     if (message.channel.nsfw) {
         try {
-            booru.search('danbooru', [args[0], args[1]], { limit: 1, random: true })
+            if (!args[0])
+            booru.search('danbooru', [args[0]], { limit: 1, random: true })
                 .then(booru.commonfy)
                 .then(images => {
                     //Log the direct link to each image 
