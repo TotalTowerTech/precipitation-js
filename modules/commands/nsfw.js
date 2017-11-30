@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args, throwex) => {
                 tag = `${tag2}`;
             }
 
-            http.request(`https://danbooru.domai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
+            http.get(`https://danbooru.domai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
                 body = JSON.parse(body);
                 let post = body[0];
                 if (error != null) {
