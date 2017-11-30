@@ -31,14 +31,14 @@ module.exports.run = async (client, message, args, throwex) => {
                 tag = `${tag2}`;
             }
 
-            http.get(`https://danbooru.domai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
+            http.get(`https://danbooru.donmai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
                 body = JSON.parse(body);
                 let post = body[0];
                 if (error != null) {
                     throwex(error);
                 } else if (body[0]) {
                     let embed = new Discord.RichEmbed()
-                        .setImage(`http://danbooru.domai.us${post.file_url}`)
+                        .setImage(`http://danbooru.donmai.us${post.file_url}`)
                         .setDescription(`This NSFW piece was drawn by ${post.tag_string}.`)
                         .addField('Is this not what you want? Try using different search terms!')
                         .setColor('GREEN')
