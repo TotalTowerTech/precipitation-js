@@ -33,6 +33,7 @@ module.exports.run = async (client, message, args, throwex) => {
 
             http.get(`https://danbooru.donmai.us/posts.json?tags=${tag}&rating=explicit&limit=1&random=true`, function (error, response, body) {
                 body = JSON.parse(body);
+                console.log(body);
                 let post = body[0];
                 if (error != null) {
                     throwex(error);
