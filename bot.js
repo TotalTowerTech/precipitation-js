@@ -179,8 +179,8 @@ client.on('messageDelete', function (message) {
 })
 
 client.on('messageReactionAdd', function (emote, message) {
-    let emote = emote.emoji.name(":star2:");
-    if (emote.count > 3) {
+    let emoe = emote.emoji.name(":star2:");
+    if (emoe.count > 3) {
         let c = client.channels.get(name, 'starboard');
         c.send(message.lastMessage);
     }
