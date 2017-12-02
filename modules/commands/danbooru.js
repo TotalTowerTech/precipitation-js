@@ -9,7 +9,6 @@ module.exports.run = async (client, message, args, throwex) => {
         try {
             if (!args[0])
                 kaori.search('danbooru', [args[0]], { limit: 1, random: true })
-                
                 .then(images => {
                     let e = new Discord.RichEmbed()
                         .setImage(images.common.fileURL)
@@ -20,6 +19,8 @@ module.exports.run = async (client, message, args, throwex) => {
                     .catch(err => {
                         throwex(err);
                 }) 
+        } catch (e) {
+            throwex(e);
         }
     } else {
         message.channel.send("This channel is not marked as an NSFW channel. Please try again with a properly set up NSFW channel.");

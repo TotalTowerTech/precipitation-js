@@ -13,7 +13,8 @@ module.exports.run = async (client, message, args, throwex) => {
                     tags: [rndTags[Math.floor(Math.random() * rndTags.length)]],
                     limit: 1,
                     random: true
-                }).then(images => {
+                })
+                    .then(images => {
                     let embed = new Discord.RichEmbed()
                         .setTitle(titles[Math.floor(Math.random() * titles.length)])
                         .setImage(images[0].common.fileURL)
