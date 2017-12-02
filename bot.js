@@ -23,8 +23,8 @@ var vicCount = 0;
 var sameMsg = {};
 
 try {
-    config = rquire("./config.json")
-catch (ex) {
+    config = require("./config.json")
+}catch (ex) {
     const data = '{"guilds": {"reee": "now shut up about errors bot"},"users": {"aaa": "unexpected end of input my ass"},"config": {"prefix": "pr:","version": "v1.0 Alpha 1","viccount": 0, "treycount": 0}}'
     const fs = require('fs')
     fs.writeFile('./config.json', data, function (err) {
