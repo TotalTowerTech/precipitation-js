@@ -145,6 +145,46 @@ client.on("message", async message => {
     }
     checkSpam(message.content, message.content);
 });
+client.on('messageDelete', function (message) {
+    if (message.content.startsWith(prefix)) return;
+    let channel;
+    if (message.guild != null) {  
+        if (message.guild.id == 297218185374203904) { //RC
+            channel = client.channels.get("335955604818624534");
+        }
+    }
+    if (channel != null && message.channel != channel) {
+        var msg = ":wastebasket: **A message was deleted by " + message.author.username + " in ** <#" + message.channel.id + ">. `" + message.createdAt.toUTCString() + "`.";
+
+        if (message.cleanContent.length) {
+            msg += "\n```\n" +
+                message.cleanContent + "\n" +
+                "```";
+        }
+
+        if (message.attachments.size > 0) {
+            msg += "\nThe following files were attached to this message:";
+
+            for (let [key, attachment] of message.attachments) {
+                if (attachment.height == null) {
+                    msg += "\n```" + attachment.filename + " @ " + parseInt(attachment.filesize) + " bytes long```";
+                } else {
+                    msg += "\n" + attachment.proxyURL;
+                }
+            }
+        }
+
+        channel.send(msg);
+    }
+})
+
+client.on('messageReactionAdd', function (emote, message) {
+    let emote = emote.emoji.name(":star2:");
+    if (emote.count > 3) {
+        let c = client.channels.get(name, 'starboard');
+        c.send(message.lastMessage);
+    }
+})
 
 process.on('unhandledRejection', function (err, p) {
     console.log("[X] " + err.stack);
