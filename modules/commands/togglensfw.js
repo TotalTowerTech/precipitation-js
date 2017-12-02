@@ -1,6 +1,5 @@
 module.exports.run = async (message, client, args, throwex) => {
     const fs = require('fs');
-    var toggleNSFW = true;
     fs.readFile('.../config.json', function (err, content) {
 
         var arrayOfObjects = JSON.parse(content);
