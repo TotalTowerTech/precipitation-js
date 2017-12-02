@@ -17,11 +17,23 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-const config = require("./config.json")
+let config;
 var prefix = 'pr:'
 var vicCount = 0;
 var sameMsg = {};
 
+try {
+    config = require("./config.json")
+}catch (ex) {
+    const data = '{"guilds": {"reee": "now shut up about errors bot"},"users": {"aaa": "unexpected end of input my ass"},"config": {"prefix": "pr:","version": "v1.0 Alpha 1","viccount": 0, "treycount": 0}}'
+    const fs = require('fs')
+    try{
+        fs.writeFileSync('config.json', data);
+    }catch (e){
+        console.log("Cannot write file ", e);
+    }
+    config = require("./config.json")
+}
 var token = process.env.TOKEN
 
 client.login(token)
