@@ -11,7 +11,6 @@ module.exports.run = async (client, message, args, throwex) => {
                 kaori.search('danbooru', [args[0]], { limit: 1, random: true })
                 
                 .then(images => {
-                    //Log the direct link to each image 
                     let e = new Discord.RichEmbed()
                         .setImage(images.common.fileURL)
                         .setTitle(titles[Math.floor(Math.random() * titles.length)])
