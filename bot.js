@@ -17,7 +17,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-let config = require("./config.json")
+let config;
 var prefix = 'pr:'
 var vicCount = 0;
 var sameMsg = {};
@@ -30,6 +30,7 @@ try {
     fs.writeFile('./config.json', data, function (err) {
         if(err) console.error(err)
     });
+        config = require("./config.json")
 }
 var token = process.env.TOKEN
 
