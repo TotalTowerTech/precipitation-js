@@ -3,8 +3,14 @@ module.exports.run = async (client, message, args, throwex) => {
     const Kaori = require('kaori');
     const kaori = new Kaori();
     
-    var rndTags = ['furry', 'gay', 'incest', 'hentai', 'oppai', 'cat', 'pokemon'];
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
+    fs.readFile('../../servers.json', function (err, content) {
+        var arrayOfObjects = JSON.parse(content);
+        if (arrayOfObjects[message.guild.name]['toggleNSFW'] == false) {
+            message.channel.send("NSFW is currently disabled. Please try again later.");
+            return;
+        }
+    });
     if (message.channel.nsfw) {
         try {
             if (!args.join("+").toLowerCase()) {
