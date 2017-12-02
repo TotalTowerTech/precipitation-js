@@ -22,18 +22,6 @@ var prefix = 'pr:'
 var vicCount = 0;
 var sameMsg = {};
 
-try {
-    config = require("./config.json")
-}catch (ex) {
-    const data = '{"guilds": {"reee": "now shut up about errors bot"},"users": {"aaa": "unexpected end of input my ass"},"config": {"prefix": "pr:","version": "v1.0 Alpha 1","viccount": 0, "treycount": 0}}'
-    const fs = require('fs')
-    try{
-        fs.writeFileSync('config.json', data);
-    }catch (e){
-        console.log("Cannot write file ", e);
-    }
-    config = require("./config.json")
-}
 var token = process.env.TOKEN
 
 client.login(token)
@@ -89,12 +77,7 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
 
-    if (message.author.id === "247221105515823104" && message.content.toLowerCase().includes("piro")) {
-        var treyCount = 0;
-        treyCount = treyCount + 1;
-        message.channel.send(`BAD TREY! (Current count: ${treyCount})`);
-        fs.writeFileSync('./config.json', JSON.stringify(config.config.treycount, treyCount))
-    }
+    
 
     if (message.content.includes(process.env.TOKEN)) {
         let embed = new Discord.RichEmbed()
@@ -116,10 +99,7 @@ client.on("message", async message => {
         console.log(e);
     }
 
-    if (message.author.id === "278805875978928128" && message.content.includes(":P" || ":stuck_out_tongue:")) {
-        fs.writeFileSync('./config.json', JSON.stringify(config.config.viccount, vicCount++));
-        message.channel.send(`BAD VICTOR! (Current count: ${vicCount})`);
-    }
+    
 
     try {
         let starEmote = message.reactions.equals("?");
