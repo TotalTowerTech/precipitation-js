@@ -1,7 +1,9 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js');
     const Kaori = require('kaori');
-    var kaori = new Kaori();
+    var e621 = require('./e621.json');
+
+    const kaori = new Kaori(e621);
     var rndTags = ['furry', 'gay', 'incest', 'hentai', 'oppai', 'cat', 'pokemon'];
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
     if (message.channel.nsfw) {
@@ -14,10 +16,14 @@ module.exports.run = async (client, message, args, throwex) => {
                 }).then(images => {
                     let embed = new Discord.RichEmbed()
                         .setTitle(titles[Math.floor(Math.random() * titles.length)])
-                        .setImage(images[0].common.fileURL())
+                        .setImage(images[0].common.fileURL)
                         .setColor('GREEN')
                     message.channel.send({ embed });
-                })
+                    })
+                    .catch(e => {
+                        throwex(e);
+                    })
+
             }
             kaori.search('e621', {
                 tags: [args[0]],
@@ -26,7 +32,7 @@ module.exports.run = async (client, message, args, throwex) => {
             }).then(images => {
                 let embed = new Discord.RichEmbed()
                     .setTitle(titles[Math.floor(Math.random() * titles.length)])
-                    .setImage(images[0].common.fileURL())
+                    .setImage(images[0].common.fileURL)
                     .setColor('GREEN')
                 message.channel.send({ embed });
             })
