@@ -28,6 +28,6 @@ module.exports.run = async (message, client, args, throwex) => {
 module.exports.help = {
     name: 'togglensfw',
     args: 'none',
-    notes: 'Enables or disables NSFW commands. (not finished)'
+    notes: 'Enables or disables NSFW commands. (not finished)',
     category: 'NSFW'
 }
