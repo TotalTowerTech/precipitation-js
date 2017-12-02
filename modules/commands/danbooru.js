@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args, throwex) => {
                 kaori.search('danbooru', [args.join("+").toLowerCase()], { limit: 1, random: true })
                     .then(images => {
                         let e = new Discord.RichEmbed()
-                            .setImage(images.common.fileURL)
+                            .setImage(images[0].common.fileURL)
                             .setTitle(titles[Math.floor(Math.random() * titles.length)])
                             .setColor('GREEN')
                         message.channel.send({ e });
