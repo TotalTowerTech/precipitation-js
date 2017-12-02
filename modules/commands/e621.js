@@ -9,34 +9,24 @@ module.exports.run = async (client, message, args, throwex) => {
     if (message.channel.nsfw) {
         try {
             if (!args[0]) {
+                let embed = new Discord.RichEmbed()
+                    .setTitle("I need information!")
+                    .setDescription("I need to have tags so I can gather information. Try again.")
+                    .setColor("GREEN")
+                message.channel.send({ embed });
+            } else {
                 kaori.search('e621', {
-                    tags: [rndTags[Math.floor(Math.random() * rndTags.length)]],
+                    tags: [args.join("+").toLowerCase()],
                     limit: 1,
                     random: true
-                })
-                    .then(images => {
+                }).then(images => {
                     let embed = new Discord.RichEmbed()
                         .setTitle(titles[Math.floor(Math.random() * titles.length)])
                         .setImage(images[0].common.fileURL)
                         .setColor('GREEN')
                     message.channel.send({ embed });
-                    })
-                    .catch(e => {
-                        throwex(e);
-                    })
-
-            }
-            kaori.search('e621', {
-                tags: [args[0]],
-                limit: 1,
-                random: true
-            }).then(images => {
-                let embed = new Discord.RichEmbed()
-                    .setTitle(titles[Math.floor(Math.random() * titles.length)])
-                    .setImage(images[0].common.fileURL)
-                    .setColor('GREEN')
-                message.channel.send({ embed });
-            })
+                    }).catch(e => throwex(e))
+            }  
         } catch (e) {
             throwex(e);
         }

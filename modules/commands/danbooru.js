@@ -7,18 +7,26 @@ module.exports.run = async (client, message, args, throwex) => {
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
     if (message.channel.nsfw) {
         try {
-            if (!args[0])
-                kaori.search('danbooru', [args[0]], { limit: 1, random: true })
-                .then(images => {
-                    let e = new Discord.RichEmbed()
-                        .setImage(images.common.fileURL)
-                        .setTitle(titles[Math.floor(Math.random() * titles.length)])
-                        .setColor('GREEN')
-                    message.channel.send({ e });
-                })
+            if (!args.join("+").toLowerCase()) {
+                let embed = new Discord.RichEmbed()
+                    .setTitle("I need information!")
+                    .setDescription("I need to have tags so I can gather information. Try again.")
+                    .setColor("GREEN")
+                message.channel.send({ embed });
+            } else {
+                kaori.search('danbooru', [args.join("+").toLowerCase()], { limit: 1, random: true })
+                    .then(images => {
+                        let e = new Discord.RichEmbed()
+                            .setImage(images.common.fileURL)
+                            .setTitle(titles[Math.floor(Math.random() * titles.length)])
+                            .setColor('GREEN')
+                        message.channel.send({ e });
+                    })
                     .catch(err => {
                         throwex(err);
-                }) 
+                    }) 
+            }
+                
         } catch (e) {
             throwex(e);
         }
