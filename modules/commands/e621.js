@@ -4,16 +4,9 @@ module.exports.run = async (client, message, args, throwex) => {
     var e621 = require('./e621.json');
     const kaori = new Kaori(e621);
     const titles = ["Here's that stuff for ya~", "This isn't even NSFW for you?", "This has a *lot* more than just countries it shows..."];
-    const fs = require('fs');
-    fs.readFile('../../servers.json', function (err, content) {
-        var arrayOfObjects = JSON.parse(content);
-        if (arrayOfObjects[message.guild.name]['toggleNSFW'] == false) {
-            message.channel.send("NSFW is currently disabled. Please try again later.");
-            return;
-        }
-    });
+   
     if (message.channel.nsfw) {
-        if (!args[0]) {
+        if (!args.join("+").toLowerCase()) {
             let embed = new Discord.RichEmbed()
                 .setTitle("I need information!")
                 .setDescription("I need to have tags so I can gather information. Try again.")
