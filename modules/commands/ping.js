@@ -1,6 +1,7 @@
 module.exports.run = async (client, message, args) => {
     var pingReplies = ["I'm totally not AstralMod!", "Sausages.", "Rain, rain, go away...", "Don't do drugs, kids.", "[insert generic response here]"];
-    message.reply(`:ping_pong: Pong! ${pingReplies[Math.floor(Math.random () * pingReplies.length)]} (Ping time is ${Math.round(client.ping)} ms.)`)
+    await message.edit('Pinging...');
+    return message.edit(`:ping_pong: Pong! ${pingReplies[Math.floor(Math.random() * pingReplies.length)]} The client's ping is ${Math.round(client.ping)} ms. The API ping is ${Math.round(message.editedTimestamp - message.createdTimestamp)}`)
 }
 
 module.exports.help = {

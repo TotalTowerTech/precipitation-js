@@ -9,10 +9,7 @@ module.exports.run = async (client, message, args, throwex) => {
         time: 15000,
         errors: ['time']
     }).then(collected => {
-        fs.readFile('../../users.json', function (err, content) {
-            var obj = JSON.parsee(content);
-
-        })
+       
         }).catch(() => {
             message.channel.send("No reason was specified. Cancelling action.");
         })

@@ -1,15 +1,15 @@
 module.exports.run = async (client, message, args, throwex) => {
     const Discord = require('discord.js')
     try {
-        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply(`**:no_entry_sign: ERROR:** Insufficient permissions.`);
-
+        if (!message.author.hasPermission("KICK_MEMBERS")) return message.channel.send("You don't have the permissions required to kick, you scrub.");
         let person = message.guild.member(message.mentions.users.first());
-        if (person == null) return message.reply("**:no_entry_sign: ERROR:** No one was pinged.");
-
+        if (person == null) return message.reply("You gotta ping someone!");
         message.guild.member(person).kick(args.slice(1).join(" ")).then(member => {
-            message.reply(`${member.user.username} has been kicked with reason ${args.join(" ")}.`)
-            member.send(`You have been kicked from **${message.guild.name}** with the following reason: \r\n\`\`\`${args.slice(1).join(" ")}\`\`\`\`\n You may be able to join, but it's best to wait a few days to set back a bit.`)
+            message.channel.send(`${member.user.username} has been kicked with reason ${args.slice(1).join(" ")}`)
+        }).catch(err => {
+            message.channel.send(err);
         })
+        
     } catch (error) {
         throwex(error);
     }
