@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args, throwex) => {
         time: 15000,
         errors: ['time']
     }).then(collected => {
-        message.channel.send(collected);
+        message.channel.send(message.cleanContent);
         }).catch(() => {
             message.channel.send("No reason was specified. Cancelling action.");
         })
