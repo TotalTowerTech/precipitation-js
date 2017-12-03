@@ -16,7 +16,7 @@ module.exports.run = async (message, client, args, throwex) => {
             } else {
                 arrayOfObjects[message.guild.name] = {};
                 arrayOfObjects[message.guild.name]['toggleNSFW'] = true;
-                fs.writeFile('.../config.json', JSON.stringify(arrayOfObjects), 'utf-8', function (err) { if (err) throwex(err); })
+                fs.writeFile('../../servers.json', JSON.stringify(arrayOfObjects), 'utf-8', function (err) { if (err) throwex(err); })
             }
         } catch (e) {
             throwex(e);
