@@ -1,7 +1,7 @@
 module.exports.run = async (client, message, args, throwex) => {
     let warnCount = 0;
     const fs = require('fs');
-    let foundUser = message.member.mentions.first();
+    let foundUser = message.mentions.users.first();
     message.channel.send('What tag would you like to see? This will await will be cancelled in 30 seconds. It will finish when you provide a message that goes through the filter the first time.')
         .then(() => {
             message.channel.awaitMessages(reason => reason.content == message.content, {
