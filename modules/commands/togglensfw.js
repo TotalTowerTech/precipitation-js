@@ -4,18 +4,18 @@ module.exports.run = async (message, client, args, throwex) => {
         var arrayOfObjects = JSON.parse(content);
         try {
             if (arrayOfObjects[message.guild.name]) {
-                if (arrayOfObjects[message.guild.name]['toggleNSFW'] == true) {
-                    arrayOfObjects[message.guild.name]['toggleNSFW'] == false;
+                if (arrayOfObjects[message.guild.id]['toggleNSFW'] == true) {
+                    arrayOfObjects[message.guild.id]['toggleNSFW'] == false;
                     fs.writeFile('.../config.json', JSON.stringify(arrayOfObjects), 'utf-8', function (err) { if (err) throwex(err); })
                     message.channel.send('Okay, I disabled NSFW for now. Reenable this by running the command again!');
                 } else {
-                    arrayOfObjects[message.guild.name]['toggleNSFW'] == true;
+                    arrayOfObjects[message.guild.id]['toggleNSFW'] == true;
                     fs.writeFile('.../config.json', JSON.stringify(arrayOfObjects), 'utf-8', function (err) { if (err) throwex(err); })
                     message.channel.send('Okay, I reenabled NSFW for now. Redisable this by running the command again!');
                 }
             } else {
-                arrayOfObjects[message.guild.name] = {};
-                arrayOfObjects[message.guild.name]['toggleNSFW'] = true;
+                arrayOfObjects[message.guild.id] = {};
+                arrayOfObjects[message.guild.id]['toggleNSFW'] = true;
                 fs.writeFile('../../servers.json', JSON.stringify(arrayOfObjects), 'utf-8', function (err) { if (err) throwex(err); })
             }
         } catch (e) {
