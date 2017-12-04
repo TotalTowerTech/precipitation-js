@@ -16,8 +16,8 @@ module.exports.run = async (client, message, args) => {
         if (member.username.startsWith(search)) {
             let embed = new Discord.RichEmbed()
                 .setAuthor("Avatar")
-                .setDescription(`${search.username}'s current avatar! c:`)
-                .setImage(search.displayAvatarURL)
+                .setDescription(`${member.username}'s current avatar! c:`)
+                .setImage(member.displayAvatarURL)
                 .setColor("GREEN")
                 .setFooter(`PJS v${param.ver}`, message.author.displayAvatarURL)
         } else if (message.mentions.users.first()) {
