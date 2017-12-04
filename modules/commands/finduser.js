@@ -15,8 +15,8 @@ module.exports.run = async (client, message, args, throwex) => {
         }
         if (searchResult == '') return message.channel.send("The search result turned up blank. Try again later! c:");
         if (count >= 10) searchResult += "There were more results, but there were too many users. Try again with a different query.";
-        let finalMsg = '\n' + '```' + searchResult + '```';
     }
+    let finalMsg = '\n' + '```' + searchResult + '```';
     message.channel.send(`Here's who I found with your requested query: ${finalMsg}`);
 
 }
