@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
                 .setFooter(`PJS v${param.ver}`, message.author.displayAvatarURL)
                 .setTimestamp()
         }
-        if (member.username.startsWith(search)) {
+        if (member.username.toLowerCase().startsWith(search)) {
             let embed = new Discord.RichEmbed()
                 .setAuthor("Avatar")
                 .setDescription(`${member.username}'s current avatar! c:`)
