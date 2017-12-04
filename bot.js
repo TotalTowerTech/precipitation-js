@@ -18,7 +18,7 @@ const fs = require('fs');
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 let config;
-var prefix = 'pr:'
+var prefix = 'pr;';
 var vicCount = 0;
 var sameMsg = {};
 
