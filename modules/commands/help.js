@@ -1,5 +1,5 @@
 module.exports.run = async (client, message, args) => {
-    const bot = require('../../param.json');
+    const param = require('../../param.json');
     let ver = param.ver;
     const Discord = require('discord.js');
     try {
