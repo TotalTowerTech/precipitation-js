@@ -3,7 +3,8 @@ module.exports.run = async (client, message, args) => {
     let search = args.join(" ");
     let embed;
     const Discord = require('discord.js');
-    for (let member of client.users) {
+    for (let key of client.users) {
+        let member = client.users[key];
         if (!member) {
             embed = new Discord.RichEmbed()
                 .setAuthor("Avatar")
