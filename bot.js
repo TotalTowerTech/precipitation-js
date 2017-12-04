@@ -12,7 +12,8 @@
  * 
  * *************************************/
 
-var ver = "0.9";
+const param = require('./param.json');
+var ver = param.ver;
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();

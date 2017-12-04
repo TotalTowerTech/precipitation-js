@@ -1,6 +1,6 @@
 module.exports.run = async (client, message, args) => {
-    const bot = require('../../bot.js');
-    let ver = bot.ver;
+    const bot = require('../../param.json');
+    let ver = param.ver;
     const Discord = require('discord.js');
     try {
         if (!args[0]) {
@@ -23,8 +23,8 @@ module.exports.run = async (client, message, args) => {
                 embed.addField(x, cat,true);
             })            
 		embed.setColor("GREEN");
-		embed.setTitle(`Help for PJS v${ver}.`);
-                embed.setDescription("For more information on a command, please use `pr;help [command]`.");
+        embed.setTitle(`Help for PJS v${ver}.`);
+        embed.setDescription("For more information on a command, please use `" + param.prefix + "help[command]`.");
                 message.channel.send({ embed });
         }
         else {
