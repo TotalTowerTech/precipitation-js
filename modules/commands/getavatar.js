@@ -1,24 +1,36 @@
 module.exports.run = async (client, message, args) => {
-const Discord = require('discord.js');
- if (message.mentions.users.first()) {
-     let mentionMembers = message.mentions.members.first()
-     let mentionUsers = message.mentions.users.first()
-     let embed = new Discord.RichEmbed()
-         .setAuthor("Avatar")
-         .setDescription(`${mentionUsers.username}'s current avatar! c:`)
-         .setImage(mentionUsers.displayAvatarURL)
-         .setColor("GREEN")
-         .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS`, message.author.displayAvatarURL)
-     message.channel.send({embed})
- } else {
-     let embed = new Discord.RichEmbed()
-         .setAuthor("Avatar")
-         .setDescription("Your current avatar! c:")
-         .setImage(message.author.displayAvatarURL)
-         .setColor("GREEN")
-         .setFooter(`Requested by ${message.author.tag} on ${new Date()} | PrecipitationJS`, message.author.displayAvatarURL)
-     message.channel.send({embed})
- }
+    const param = require('../../param.json');
+    let search = args.join(" ");
+    let embed;
+    const Discord = require('discord.js');
+    for (let member of client.users) {
+        if (!member) {
+            embed = new Discord.RichEmbed()
+                .setAuthor("Avatar")
+                .setDescription("Your current avatar! c:")
+                .setImage(message.author.displayAvatarURL)
+                .setColor("GREEN")
+                .setFooter(`PJS v${param.ver}`, message.author.displayAvatarURL)
+                .setTimestamp()
+        }
+        if (member.username.startsWith(search)) {
+            let embed = new Discord.RichEmbed()
+                .setAuthor("Avatar")
+                .setDescription(`${search.username}'s current avatar! c:`)
+                .setImage(search.displayAvatarURL)
+                .setColor("GREEN")
+                .setFooter(`PJS v${param.ver}`, message.author.displayAvatarURL)
+        } else if (message.mentions.users.first()) {
+            let mentionUsers = message.mentions.users.first();
+            embed = new Discord.RichEmbed()
+                .setAuthor("Avatar")
+                .setDescription(`${mentionUsers.username}'s current avatar! c:`)
+                .setImage(mentionUsers.displayAvatarURL)
+                .setColor("GREEN")
+                .setFooter(`PJS v${param.ver}`, message.author.displayAvatarURL)
+        }
+    }
+    message.channel.send({ embed });
 }
 module.exports.help = {
     name: 'getavatar',

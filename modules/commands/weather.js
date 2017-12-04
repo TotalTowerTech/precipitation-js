@@ -9,7 +9,8 @@ module.exports.run = async (client, message, args, throwex) => {
                     .setTitle("Error - No Location")
                     .setDescription("Please enter a valid location.")
                     .setColor("GREEN")
-                    .setFooter(`Requested by ${message.author.username} on ${new Date()} | PrecipitationJS v0.1.2`)
+                    .setFooter(`PJS ${param.ver}`)
+                    .setTimestamp()
                 message.channel.send({ e });
                 return;
             }

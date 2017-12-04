@@ -125,7 +125,6 @@ client.on("message", async message => {
         }
         oldMsg[message.author.id] = message.content;
         sameMsg[message.author.id] += 1;
-
         if (oldMsg[message.author.id] == message.content && sameMsg[message.author.id] == 10) {
             let auth = message.author;
             if (message.guild.id == 297218185374203904) {

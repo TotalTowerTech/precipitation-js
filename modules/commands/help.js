@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
 		embed.setColor("GREEN");
         embed.setTitle(`Help for PJS v${ver}.`);
         embed.setDescription("For more information on a command, please use `" + param.prefix + "help[command]`.");
-                message.channel.send({ embed });
+        message.channel.send({ embed });
         }
         else {
             let command = client.commands.get(args[0]);

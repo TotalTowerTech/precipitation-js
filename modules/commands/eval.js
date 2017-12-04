@@ -1,5 +1,6 @@
 module.exports.run = async (client, message, args) => { 
-	const Discord = require('discord.js');
+    const param = require('../../param.json')
+    const Discord = require('discord.js');
 	if(message.author.id == "228271067821506560" || message.author.id == "297201585090723841" || message.author.id == "236279900728721409") {
 		module.exports.error = "**:no_entry_sign: ERROR** "
 		module.exports.fgRed = "\x1b[1m\x1b[31m"
@@ -23,7 +24,7 @@ module.exports.run = async (client, message, args) => {
 		.addField(":inbox_tray: Input:", `\`\`\`js\n${code}\n\`\`\``)
 		.addField(":outbox_tray: Output:", `\`\`\`js\n${clean(evaled)}\n\`\`\``)
 		.setColor("GREEN")
-		.setFooter("Precipitation 0.1.2", client.user.avatarURL)
+		.setFooter("PJS v" + param.ver, client.user.avatarURL)
 		.setTimestamp()
       message.channel.send({ embed });
 		} catch(err) {

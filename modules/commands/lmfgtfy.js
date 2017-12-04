@@ -1,4 +1,5 @@
 module.exports.run = async (client, message, args, throwex) => {
+    const param = require('../../param.json');
     const Discord = require('discord.js');
     function replaceAll(search, placement) {
         var target = this;
@@ -9,8 +10,8 @@ module.exports.run = async (client, message, args, throwex) => {
         let embed = new Discord.RichEmbed()
             .setTitle(`LMFGTFY - ${args.join(" ")}`)
             .setDescription(`www.lmfgtfy.com/?q=${args.join("+")}`)
-            .setFooter(`Requested by ${message.author.username} on ${new Date()} | PrecipitationJS v0.1.2`)
-            .setColor("GREEN")
+            .setFooter(`PJS ${param.ver}`)
+            .setTimestamp()
         message.channel.send({ embed });
     } catch (e) {
         throwex(e);
