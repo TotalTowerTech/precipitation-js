@@ -22,5 +22,5 @@ module.exports.help = {
     name: 'finduser',
     args: '[searchResult]',
     notes: 'Find any user with ease with this simple command!',
-    category: 'Informative'
+    category: 'Information'
 }
