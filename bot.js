@@ -12,7 +12,7 @@
  * 
  * *************************************/
 
-var ver = "0.1.2";
+var ver = "0.9";
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
@@ -109,8 +109,7 @@ client.on("message", async message => {
             .setDescription(`An error has occured while performing an action.\r\n${e})`)
             .setColor("RED")
         message.channel.send({ embed });
-    }    
-
+    }
     let array = message.content.split(" ");
     let command = array[0];
     let args = array.slice(1);

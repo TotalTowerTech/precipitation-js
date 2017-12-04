@@ -1,9 +1,10 @@
 module.exports.run = async (client, message, args) => {
-	const Discord = require('discord.js');
+    const bot = require('../../bot.js');
+    let ver = bot.ver;
+    const Discord = require('discord.js');
     try {
         if (!args[0]) {
             let categories = [];
-            let ver = "0.1.2"
             let embed = new Discord.RichEmbed()
             let helpString = "";
             let commands = Array.from(client.commands.keys());
@@ -22,17 +23,19 @@ module.exports.run = async (client, message, args) => {
                 embed.addField(x, cat,true);
             })            
 		embed.setColor("GREEN");
-		embed.setTitle(`Help for PrecipitationJS v${ver}.`);
-                embed.setDescription("For more information on a command, please use `pr:help [command]`.");
+		embed.setTitle(`Help for PJS v${ver}.`);
+                embed.setDescription("For more information on a command, please use `pr;help [command]`.");
                 message.channel.send({ embed });
         }
         else {
             let command = client.commands.get(args[0]);
-            if (!command) return message.channel.send(`The command ` + "`" + args[0] + "` does not exist.")
+            if (!command) return message.channel.send(`The command \`${args[0]}\` does not exist. Try ${bot.prefix}help for a list of commands!`)
             let embed = new Discord.RichEmbed()
             embed.setTitle(`Help for ${args[0]}:`)
             embed.setDescription(command.help.notes)
             embed.addField('Parameters: ', command.help.args)
+            embed.addField('Category', command.help.category)
+            embed.setColor("GREEN")
             message.channel.send({ embed });
 
         }
