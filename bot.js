@@ -185,3 +185,8 @@ client.on('messageReactionAdd', function (emote, message) {
 process.on('unhandledRejection', function (err, p) {
     console.log("[X] " + err.stack);
 });
+client.on('guildMemberAdd' member => {
+let memberlogs = member.guild.channels.find(c => c.name === 'member-logs')
+if(memberlogs === null) return;
+member.guild.channels.find(c => c.name === 'member-logs').send(`**User Joined**\n${member.user.username} has just joined the server!\n**Discriminator:** ${member.user.discriminator}\n**Created on:** ${member.user.createdAt}\n**UserID:** ${member.user.id}`) 
+});
